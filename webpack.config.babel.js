@@ -16,7 +16,6 @@ module.exports = (env, options) => {
         mode: development ? 'development' : 'production',
         entry: {
             index: ['@babel/polyfill', './src/index.js'],
-            login: ['@babel/polyfill', './src/login/index.js'],
         },
         output: {
             path: path.resolve(__dirname, './dist'),
@@ -118,12 +117,6 @@ module.exports = (env, options) => {
             new HtmlWebpackPlugin({
                 filename: 'index.html',
                 template: 'public/index.html',
-                excludeChunks: 'public/login.html',
-            }),
-            new HtmlWebpackPlugin({
-                filename: 'login.html',
-                template: 'public/login.html',
-                excludeChunks: 'public/index.html',
             }),
             ...(development ? [
                 new webpack.HotModuleReplacementPlugin(),
